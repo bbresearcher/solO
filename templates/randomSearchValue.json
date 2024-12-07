@@ -1,0 +1,4 @@
+{ "name":"Equivalent", 
+  "match": ["1==1"], 
+  "description":"Found an random equivalency check"
+}
