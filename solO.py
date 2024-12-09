@@ -1,4 +1,4 @@
-#DISCLAIMER: I DO NOT WARRANTY THIS CODE TO BE BUG FREE OR TO BE FIT FOR PURPOSE, RUNNING solO AGAINST A PROJECT DOES NOT GUARANTEE THAT THE PROJECT IS SECURE AND/OR BUG FREE
+#I DO NOT WARRANTY THIS CODE TO BE BUG FREE OR TO BE FIT FOR PURPOSE, RUNNING solO AGAINST A PROJECT DOES NOT GUARANTEE THAT THE PROJECT IS SECURE AND/OR BUG FREE
 from subprocess import PIPE,Popen
 import random
 import os
@@ -66,9 +66,9 @@ def runSolO(project_dir,rules_dir):
                                             strAddInstr = "Struct has instuction inputs of : " + rustLine.replace("#","").replace("\n","")
                                             isInstruction = True
                                         if re.search(r'\b{}\b'.format("pub struct"),rustLine):
-                                            strObj = strObj + "---\n #: Account Object found: " + rustLine.split("struct",1)[1].split("<",1)[0].strip() + "\n\n"
+                                            strObj = strObj + "---\n:large_blue_diamond: **#: Account Object found: " + rustLine.split("struct",1)[1].split("<",1)[0].strip() + "**\n\n"
                                             if len(strAddInstr) > 0:
-                                                strObj = strObj + "*" + strAddInstr + "* \n\n"
+                                                strObj = strObj + ":arrow_right:  *" + strAddInstr + "* \n\n"
                                                 strAddInstr = "" 
                                         if rustLine.find("[") > 0 and rustLine.find("]") < 0 and attributesfound == True:
                                             openAttrib = openAttrib + 1  
@@ -86,7 +86,7 @@ def runSolO(project_dir,rules_dir):
                                             if len(strTmp)> 0:
                                                 strAttributes = strAttributes +  "- " + strTmp  + "\n"
                                         if rustLine.find("#[account(") > 0:
-                                            strObj = strObj + "Anchor account member below has attributes: \n"
+                                            strObj = strObj + ":clipboard: Anchor account member below has attributes: \n"
                                             attributesfound = True
                                             strTmp = rustLine.replace("#[account(","").replace(")","").replace("]","").strip()
                                             if len(strTmp)> 0:
@@ -106,7 +106,7 @@ def runSolO(project_dir,rules_dir):
                                                 strAttributes = ""                                   
                                             
                                         if rustLine.find(":") > 0 and attributesfound == False and isInstruction == False:
-                                            strObj = strObj + "**" + rustLine.split(":",1)[0].replace("pub ", "").strip() + " of type " + rustLine.split(":",1)[1].replace("\n","").strip() + "**\n\n"
+                                            strObj = strObj + ":red_circle: **[STRUCT FIELD:] " + rustLine.split(":",1)[0].replace("pub ", "").strip() + " of type " + rustLine.split(":",1)[1].replace("\n","").strip() + "**\n\n"
 
                             accountsList = accountsList + strObj
                             strObj = ""
@@ -161,7 +161,7 @@ def main():
     import argparse
     parser = argparse.ArgumentParser()
     # 2 arguments used
-    # project_dir ---> is the fully qualified path to the Solana project folder
+    # project_dir ---> is the fully qualified path to the HALO2 project folder
     # rules_dir   ---> is the fully qualified path to the templates directory in 
     #                   most cases will be one level down for here
     parser.add_argument("project_dir", help="The project directory")
