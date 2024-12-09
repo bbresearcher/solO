@@ -31,14 +31,14 @@ Anchor account member below has attributes:
 - payer = initializer,
 - space = DISCRIMINATOR + DemoState::INIT_SPACE
 
-**demo_state of type Account<'info, DemoState>,**
+**STRUCT FIELD: demo_state of type Account<'info, DemoState>,**
 
 Anchor account member below has attributes: 
 - mut
 
-**initializer of type Signer<'info>,**
+**STRUCT FIELD: initializer of type Signer<'info>,**
 
-**system_program of type Program<'info, System>,**
+**STRUCT FIELD: system_program of type Program<'info, System>,**
 
 ---
  #: Account Object found: SomeOtherType
@@ -51,14 +51,14 @@ Anchor account member below has attributes:
 - seeds = [inValOne.as_bytes(), initializer.key().as_ref()],
 - bump,
 
-**demo_state of type Account<'info, DemoState>,**
+**STRUCT FIELD: demo_state of type Account<'info, DemoState>,**
 
 Anchor account member below has attributes: 
 - mut
 
-**initializer of type Signer<'info>,**
+**STRUCT FIELD: initializer of type Signer<'info>,**
 
-**system_program of type Program<'info, System>,**
+**STRUCT FIELD: system_program of type Program<'info, System>,**
 
 ---
  #: Account Object found: LastRandomType
@@ -72,14 +72,14 @@ Anchor account member below has attributes:
 - bump,
 - close=initializer
 
-**demo_state of type Account<'info, DemoState>,**
+**STRUCT FIELD: demo_state of type Account<'info, DemoState>,**
 
 Anchor account member below has attributes: 
 - mut
 
-**initializer of type Signer<'info>,**
+**STRUCT FIELD: initializer of type Signer<'info>,**
 
-**system_program of type Program<'info, System>**
+**STRUCT FIELD: system_program of type Program<'info, System>**
 
 ## Rule checks returned the list of code to check below:
 ### File: ./lib.rs
@@ -92,4 +92,3 @@ Anchor account member below has attributes:
 21-            msg!("Welcome to the Demo");
 
 ```
-
