@@ -161,7 +161,7 @@ def main():
     import argparse
     parser = argparse.ArgumentParser()
     # 2 arguments used
-    # project_dir ---> is the fully qualified path to the HALO2 project folder
+    # project_dir ---> is the fully qualified path to the Solana project folder
     # rules_dir   ---> is the fully qualified path to the templates directory in 
     #                   most cases will be one level down for here
     parser.add_argument("project_dir", help="The project directory")
