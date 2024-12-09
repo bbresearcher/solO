@@ -1,4 +1,4 @@
-#I DO NOT WARRANTY THIS CODE TO BE BUG FREE OR TO BE FIT FOR PURPOSE, RUNNING solO AGAINST A PROJECT DOES NOT GUARANTEE THAT THE PROJECT IS SECURE AND/OR BUG FREE
+#DISCLAIMER: I DO NOT WARRANTY THIS CODE TO BE BUG FREE OR TO BE FIT FOR PURPOSE, RUNNING solO AGAINST A PROJECT DOES NOT GUARANTEE THAT THE PROJECT IS SECURE AND/OR BUG FREE
 from subprocess import PIPE,Popen
 import random
 import os
@@ -66,9 +66,9 @@ def runSolO(project_dir,rules_dir):
                                             strAddInstr = "Struct has instuction inputs of : " + rustLine.replace("#","").replace("\n","")
                                             isInstruction = True
                                         if re.search(r'\b{}\b'.format("pub struct"),rustLine):
-                                            strObj = strObj + "---\n #: Account Object found: " + rustLine.split("struct",1)[1].split("<",1)[0].strip() + "\n"
+                                            strObj = strObj + "---\n #: Account Object found: " + rustLine.split("struct",1)[1].split("<",1)[0].strip() + "\n\n"
                                             if len(strAddInstr) > 0:
-                                                strObj = strObj + "*" + strAddInstr + "* \n"
+                                                strObj = strObj + "*" + strAddInstr + "* \n\n"
                                                 strAddInstr = "" 
                                         if rustLine.find("[") > 0 and rustLine.find("]") < 0 and attributesfound == True:
                                             openAttrib = openAttrib + 1  
@@ -93,7 +93,7 @@ def runSolO(project_dir,rules_dir):
                                                 strAttributes = strAttributes+ "- " + strTmp + "\n"  
                                             if rustLine.find("]") > 0:
                                                 attributesfound = False 
-                                                strObj = strObj + strAttributes
+                                                strObj = strObj + strAttributes + "\n"
                                         if rustLine.find("]") > 0 and rustLine.find("[") < 0 and attributesfound == True:
                                             if openAttrib > 0:
                                                 openAttrib = openAttrib - 1
@@ -102,11 +102,11 @@ def runSolO(project_dir,rules_dir):
                                                 strTmp = rustLine.replace(")]","").strip()
                                                 if len(strTmp)> 0:
                                                     strAttributes = strAttributes+ "- " + strTmp + "\n"
-                                                strObj = strObj + strAttributes
+                                                strObj = strObj + strAttributes + "\n"
                                                 strAttributes = ""                                   
                                             
                                         if rustLine.find(":") > 0 and attributesfound == False and isInstruction == False:
-                                            strObj = strObj + "**" + rustLine.split(":",1)[0].replace("pub ", "").strip() + " of type " + rustLine.split(":",1)[1].replace("\n","").strip() + "**\n"
+                                            strObj = strObj + "**" + rustLine.split(":",1)[0].replace("pub ", "").strip() + " of type " + rustLine.split(":",1)[1].replace("\n","").strip() + "**\n\n"
 
                             accountsList = accountsList + strObj
                             strObj = ""
